@@ -1,0 +1,22 @@
+{% extends "invApp/layout.html" %}
+
+{% block content %}
+
+<h1 class="text-center" style="margin-top:50px;">Product Form</h1>
+
+<!-- Gri alanın üst ve alt kısımlarını uzun tutacak şekilde padding ekleyelim -->
+<div class="container bg-body-secondary" style="margin-top:20px; padding-top:50px; padding-bottom:50px;border-radius:10px">
+     
+    <form class="jumbotron" method="POST" style="margin-top:20px; ">
+        {% csrf_token %}
+        {{ form }}
+        <br>
+        
+        <!-- Butonun ortalanması için grid yapısını kullanıyoruz -->
+        <div class="d-grid gap-2 col-6 mx-auto">
+            <button type="submit" class="btn btn-success">Save Product</button>
+        </div>
+    </form>
+</div>
+
+{% endblock content %}

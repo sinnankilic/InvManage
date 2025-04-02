@@ -1,0 +1,60 @@
+{% extends "invApp/layout.html" %}
+
+{% block title %}Product List{% endblock title %}
+
+{% block content %}
+<div class="container bg-body" id="form">
+    <div class="row justify-content-center">
+        <!-- Tabloyu ortalamak için col-md-10 ve col-lg-8 kullanarak merkezi konumlandırma -->
+        <div class="col-md-10 col-lg-8">
+            <h1 class="mt-4 text-center">Products</h1>
+
+            <!-- Tabloyu responsive hale getirme ve kaydırmayı kaldırma -->
+            <table class="table table-bordered table-striped" style="background-color: #f8f9fa; font-weight: bold;">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Product ID</th>
+                        <th>Name</th>
+                        <th>SKU</th>
+                        <th>Price</th>
+                        <th>Quantity</th>
+                        <th>Supplier</th>
+                        <th style="text-align:center" colspan="2">Actions</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for product in products %}
+                    <tr>
+                        <td>{{ product.product_id }}</td>
+                        <td>{{ product.name }}</td>
+                        <td>{{ product.sku }}</td>
+                        <td>{{ product.price }}</td>
+                        <td>{{ product.quantity }}</td>
+                        <td>{{ product.supplier }}</td>
+                        <td>
+                            <a href="{% url 'product_update' product.product_id %}" class="btn btn-warning btn-sm">Update</a>
+                           
+                            
+                        </td>
+                        <td>
+                              <a href="{% url 'product_delete' product.product_id %}" class="btn btn-danger btn-sm">Delete</a>
+
+                        </td>
+                       
+                        
+                       
+                    </tr>
+                    
+                    {% endfor %}
+                </tbody>
+            </table>
+            <div class="text-center">
+                  <h5>If you want to add a new product, click Add Product</h5>
+                  <a href="{% url 'product_create' %}" class="btn btn-success btn-sm">Add Product</a>
+              </div>
+              
+        </div>
+    </div>
+</div>
+{% endblock content %}
